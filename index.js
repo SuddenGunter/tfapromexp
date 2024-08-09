@@ -37,14 +37,12 @@ co2Monitor.on('error', (error) => {
 const co2gauge = new client.Gauge({ name: 'tfa_co2', help: 'ppm' });
 
 co2Monitor.on('co2', (co2) => {
-  console.log('co2: ' + co2.toString());
   co2gauge.set(co2.value);
 })
 
 const tempgauge = new client.Gauge({ name: 'tfa_temp', help: 'C' });
 
 co2Monitor.on('temperature', (temperature) => {
-  console.log('temperature: ' + temperature.toString());
   tempgauge.set(temperature.value);
 })
 

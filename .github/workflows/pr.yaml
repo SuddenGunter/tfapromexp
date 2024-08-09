@@ -1,12 +1,9 @@
 name: tag
 
 on:
-  pull_request: 
-
-# on:
-#   push:
-#     tags:        
-#       - v*
+  push:
+    tags:        
+      - v*
 
 jobs:   
   build:    
@@ -22,12 +19,12 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v3
 
-      # - name: Get the tag name
-      #   run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - name: Get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
 
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           platforms: linux/arm64,linux/amd64
-          # push: true
-          tags: suddengunter/tfapromexp:latest # :${{ env.TAG }}  
+          push: true
+          tags: suddengunter/tfapromexp:${{ env.TAG }}  

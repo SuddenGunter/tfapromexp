@@ -1,4 +1,4 @@
-FROM node:21
+FROM node:22
 RUN apt-get update && apt-get install -y \
     # Specify your package list here, for example:
     libusb-dev \

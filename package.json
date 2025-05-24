@@ -13,7 +13,6 @@
     "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docker:build": "docker build -t tfapromexp .",
-    "docker:run": "docker run -p 8080:4001 --device=/dev/bus/usb/001/005 tfapromexp",
     "docker:compose": "docker-compose up",
     "lint": "echo \"No linter configured\" && exit 0"
   },

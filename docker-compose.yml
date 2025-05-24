@@ -4,6 +4,9 @@ services:
     build: .
     init: true
     devices:
-    - '/dev/bus/usb/001/005' 
+      - '/dev/bus/usb/001/005' 
     ports:
-    - "8080:4001"
+      - "8080:4001"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production

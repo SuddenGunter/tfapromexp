@@ -11,7 +11,8 @@ app.get('/metrics', async (_req, res) => {
     res.set('Content-Type', register.contentType);
     res.end(await register.metrics());
   } catch (err) {
-    res.status(500).end(err);
+    console.error(err);
+    res.status(500).end(String(err));
   }
 });
 
@@ -61,4 +62,8 @@ co2Monitor.connect((error) => {
 });
 
 
-app.listen(9999, '0.0.0.0');
+const port = Number(process.env.PORT) || 9999;
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Metrics served on 0.0.0.0:${port}/metrics`);
+});
